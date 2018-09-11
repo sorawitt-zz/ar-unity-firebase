@@ -1,9 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Firebase;
+using Firebase.Auth;
+using UnityEngine.SceneManagement;
 
 public class FormManager : MonoBehaviour
 {
@@ -22,6 +25,7 @@ public class FormManager : MonoBehaviour
     void Awake()
     {
         ToggleButtonState(false);
+        authManager.authCallback += HandleAuthCallback;
     }
 
     public void OnSignUp()
@@ -50,6 +54,27 @@ public class FormManager : MonoBehaviour
         {
             ToggleButtonState(true);
         }
+    }
+
+    IEnumerator HandleAuthCallback(Task<Firebase.Auth.FirebaseUser> task, string operatoin)
+    {
+        if (task.IsFaulted || task.IsCanceled)
+        {
+            UpdateState("Sorry, creating new user error" + task.Exception);
+        }
+        else if (task.IsCompleted)
+        {
+            Firebase.Auth.FirebaseUser newUser = task.Result;
+            UpdateState("Loading the game scene");
+            yield return new WaitForSeconds(1.5f);
+            SceneManager.LoadScene("ProfileScene");
+
+        }
+    }
+
+    private void OnDestroy()
+    {
+        authManager.authCallback -= HandleAuthCallback;
     }
 
     //Utilities

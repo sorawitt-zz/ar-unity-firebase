@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine;
 using Firebase;
 using Firebase.Auth;
+using System.Threading.Tasks;
 
 public class AuthManager : MonoBehaviour
 {
@@ -10,6 +10,10 @@ public class AuthManager : MonoBehaviour
     // FIrebase API varibles
 
     Firebase.Auth.FirebaseAuth auth;
+
+    // Delegates
+    public delegate IEnumerator AuthCallBack(Task<Firebase.Auth.FirebaseUser> task, string operation);
+    public event AuthCallBack authCallback;
 
     void Awake()
     {
@@ -20,13 +24,7 @@ public class AuthManager : MonoBehaviour
     {
         auth.CreateUserWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
         {
-            if (task.IsFaulted || task.IsCanceled)
-            {
-                Debug.LogError("Sorry, creating new user error" + task.Exception);
-            } else if (task.IsCompleted) {
-                Firebase.Auth.FirebaseUser newUser = task.Result;
-                Debug.LogFormat("Welcome to FireQ {0}", newUser.Email);
-            }
+            StartCoroutine(authCallback(task, "sign_up"));
         });
     }
 
