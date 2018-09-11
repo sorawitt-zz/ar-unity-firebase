@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>928199040419-f16gd55rpmf2j1h7tcbgon4uk9v968g1.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.928199040419-f16gd55rpmf2j1h7tcbgon4uk9v968g1</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBpi8b7qKMKy5dJoe588uacW0HWSc1sKDU</string>
+	<key>GCM_SENDER_ID</key>
+	<string>928199040419</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.helloJimmy.helloUnity</string>
+	<key>PROJECT_ID</key>
+	<string>hellounity-92f64</string>
+	<key>STORAGE_BUCKET</key>
+	<string>hellounity-92f64.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true></true>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false></false>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:928199040419:ios:936f0e1dd81f5086</string>
+	<key>DATABASE_URL</key>
+	<string>https://hellounity-92f64.firebaseio.com</string>
+</dict>
+</plist>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "928199040419",
+    "firebase_url": "https://hellounity-92f64.firebaseio.com",
+    "project_id": "hellounity-92f64",
+    "storage_bucket": "hellounity-92f64.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:928199040419:android:936f0e1dd81f5086",
+        "android_client_info": {
+          "package_name": "com.helloJimmy.helloUnity"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "928199040419-4i51lhqkqndiit3a2e9i79aevfeev45h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUYqJFAWmPI2Z8KUQQzhyv44QrjxgAzl8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
