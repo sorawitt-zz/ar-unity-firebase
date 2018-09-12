@@ -30,12 +30,27 @@ public class FormManager : MonoBehaviour
 
     public void OnSignUp()
     {
-        authManager.SignUpNewUser(emailInput.text, password.text);
+        //authManager.SignUpNewUser(emailInput.text, password.text);
+        authManager.SignUpNewUserWithCallBack(emailInput.text, password.text, (result, isCompleted, message) =>
+        {
+            if (isCompleted)
+            {
+                Firebase.Auth.FirebaseUser newPlayer = result;
+                Debug.LogFormat("Welcome to FireQ {0}", newPlayer.UserId);
+
+                Player player = new Player(newPlayer.Email, 0, 1);
+                DatabaseManager.sharedInstance.CreateNewPlayer(player, newPlayer.UserId);
+
+                Firebase.Auth.FirebaseUser newUser = result;
+                UpdateState("Loading the game scene");
+                SceneManager.LoadScene("ProfileScene");
+            }
+        });
         Debug.Log("Sign Up");
     }
 
     public void OnLogin() {
-        authManager.SignInExistingUser(emailInput.text, password.text);
+        //authManager.SignInExistingUser(emailInput.text, password.text);
         Debug.Log("LOGIN");
 
     }
