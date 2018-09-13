@@ -64,11 +64,39 @@ public class AuthManager : MonoBehaviour
         });
     }
 
+    public void SignOut()
+    {
+        auth.SignOut();
+    }
+
+    public FirebaseUser GetProfileName() 
+    {
+        auth = FirebaseAuth.DefaultInstance;
+        Firebase.Auth.FirebaseUser user = auth.CurrentUser;
+        return user;
+    }
+
     public void SignInExistingUserWithCallBack(string email, string password, Action<bool, string> callback)
     {
         auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task =>
         {
-            //StartCoroutine(authCallback(task, "sign_in"));
+            if (task.IsCanceled)
+            {
+                callback(false, "canceled sign up");
+                return;
+            }
+
+            if (task.IsFaulted)
+            {
+                callback(false, "error" + task.Exception);
+                return;
+            }
+
+            if (task.IsCompleted)
+            {
+                callback(true, "Signed up successfully");
+                return;
+            }
         });
     }
 

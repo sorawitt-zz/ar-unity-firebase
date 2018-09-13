@@ -25,7 +25,7 @@ public class FormManager : MonoBehaviour
     void Awake()
     {
         ToggleButtonState(false);
-        authManager.authCallback += HandleAuthCallback;
+        //authManager.authCallback += HandleAuthCallback;
     }
 
     public void OnSignUp()
@@ -36,23 +36,29 @@ public class FormManager : MonoBehaviour
             if (isCompleted)
             {
                 Firebase.Auth.FirebaseUser newPlayer = result;
-                Debug.LogFormat("Welcome to FireQ {0}", newPlayer.UserId);
+                Debug.LogFormat("Welcome to FireQerrr {0}", newPlayer.UserId);
 
                 Player player = new Player(newPlayer.Email, 0, 1);
                 DatabaseManager.sharedInstance.CreateNewPlayer(player, newPlayer.UserId);
 
-                Firebase.Auth.FirebaseUser newUser = result;
                 UpdateState("Loading the game scene");
-                SceneManager.LoadScene("ProfileScene");
+                SceneManager.LoadScene("HomeScene");
             }
         });
         Debug.Log("Sign Up");
     }
 
     public void OnLogin() {
-        //authManager.SignInExistingUser(emailInput.text, password.text);
+        authManager.SignInExistingUserWithCallBack(emailInput.text, password.text, (result, message) =>
+        {
+            if (result)
+            {
+                SceneManager.LoadScene("HomeScene");
+            } else {
+                statusText.text = message;
+            }
+        });
         Debug.Log("LOGIN");
-
     }
 
     /// <summary>
@@ -72,35 +78,35 @@ public class FormManager : MonoBehaviour
         }
     }
 
-    IEnumerator HandleAuthCallback(Task<Firebase.Auth.FirebaseUser> task, string operatoin)
-    {
-        if (task.IsFaulted || task.IsCanceled)
-        {
-            UpdateState("Sorry, creating new user error" + task.Exception);
-        }
-        else if (task.IsCompleted)
-        {
-            if (operatoin == "sign_up")
-            {
-                Firebase.Auth.FirebaseUser newPlayer = task.Result;
-                Debug.LogFormat("Welcome to FireQ {0}", newPlayer.UserId);
+    //IEnumerator HandleAuthCallback(Task<Firebase.Auth.FirebaseUser> task, string operatoin)
+    //{
+    //    if (task.IsFaulted || task.IsCanceled)
+    //    {
+    //        UpdateState("Sorry, creating new user error" + task.Exception);
+    //    }
+    //    else if (task.IsCompleted)
+    //    {
+    //        if (operatoin == "sign_up")
+    //        {
+    //            Firebase.Auth.FirebaseUser newPlayer = task.Result;
+    //            Debug.LogFormat("Welcome to FireQ {0}", newPlayer.UserId);
 
-                Player player = new Player(newPlayer.Email, 0, 1);
-                DatabaseManager.sharedInstance.CreateNewPlayer(player, newPlayer.UserId);
-            }
+    //            Player player = new Player(newPlayer.Email, 0, 1);
+    //            DatabaseManager.sharedInstance.CreateNewPlayer(player, newPlayer.UserId);
+    //        }
 
-            Firebase.Auth.FirebaseUser newUser = task.Result;
-            UpdateState("Loading the game scene");
-            yield return new WaitForSeconds(1.5f);
-            SceneManager.LoadScene("ProfileScene");
+    //        Firebase.Auth.FirebaseUser newUser = task.Result;
+    //        UpdateState("Loading the game scene");
+    //        yield return new WaitForSeconds(1.5f);
+    //        SceneManager.LoadScene("ProfileScene");
 
-        }
-    }
+    //    }
+    //}
 
-    private void OnDestroy()
-    {
-        authManager.authCallback -= HandleAuthCallback;
-    }
+    //private void OnDestroy()
+    //{
+    //    authManager.authCallback -= HandleAuthCallback;
+    //}
 
     //Utilities
     private void ToggleButtonState(bool toState)

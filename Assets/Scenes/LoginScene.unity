@@ -113,6 +113,46 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &64344801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 64344803}
+  - component: {fileID: 64344802}
+  m_Layer: 0
+  m_Name: DatabaseManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &64344802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 64344801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b664d9c57d9684d5e8734021c754aa51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &64344803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 64344801}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.18243714, y: -0.49762052, z: 0.1087153}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &76045958
 GameObject:
   m_ObjectHideFlags: 0
@@ -1294,7 +1334,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1232467595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce7130fcd424440cf83fe82b29b921dc, type: 3}
+  m_Script: {fileID: 11500000, guid: ce6980cf6b2a844c2a3c31a129947b51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1324807835
@@ -1982,7 +2022,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1559274083}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e7dfcb005adc4bb998c165cb31d6d2d, type: 3}
+  m_Script: {fileID: 11500000, guid: efff7491939cc4c9abb73629ae3e415e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   emailInput: {fileID: 590310778}

@@ -31,4 +31,9 @@ public class DatabaseManager : MonoBehaviour {
         string playerJSON = JsonUtility.ToJson(player);
         Router.PlayerWithUID(uid).SetRawJsonValueAsync(playerJSON);
     }
+
+    public void SaveTimeCount(string uid, float timeCout)
+    {
+        Router.PlayerWithUID(uid).Child("TimeCout").SetValueAsync(timeCout);
+    }
 }

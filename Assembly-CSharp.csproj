@@ -61,6 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Script\Controller\CourseController.cs" />
+    <Compile Include="Assets\Script\Controller\HomeController.cs" />
+    <Compile Include="Assets\Script\Controller\PlayerProfileController.cs" />
     <Compile Include="Assets\Script\Managers\AuthManager.cs" />
     <Compile Include="Assets\Script\Managers\DatabaseManager.cs" />
     <Compile Include="Assets\Script\Managers\FormManager.cs" />
